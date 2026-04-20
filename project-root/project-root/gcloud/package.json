@@ -1,0 +1,22 @@
+{
+  "name": "misinformation-detector",
+  "version": "1.0.0",
+  "description": "Chrome extension for misinformation detection",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "nodemon server.cjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "@google-cloud/speech": "^6.0.0",
+    "@google/generative-ai": "^0.2.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "file-type": "^18.0.0",
+    "axios": "^1.5.0",
+    "uuid": "^9.0.0",
+    "dotenv": "^16.3.1"
+  }
+}
