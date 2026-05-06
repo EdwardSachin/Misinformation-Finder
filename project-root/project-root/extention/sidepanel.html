@@ -19,7 +19,6 @@
 
     <div class="tabs">
       <button class="tab active" data-tab="website">Website</button>
-      <button class="tab" data-tab="media">Media</button>
       <button class="tab" data-tab="history">History</button>
     </div>
 
@@ -43,56 +42,7 @@
       </div>
     </div>
 
-    <div class="tab-content" id="media-tab">
-      <div class="upload-section">
-        <label for="uploadAudio">🎤 Audio Input</label>
-        <div class="control-buttons">
-          <button id="checkMic">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg> Record Audio
-          </button>
-        </div>
-        <div class="file-input-container">
-          <label for="uploadAudio">Or upload audio file:</label>
-          <input type="file" id="uploadAudio" accept="audio/*" />
-        </div>
-        <button id="uploadAudioBtn" disabled>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
-          </svg> Upload Audio
-        </button>
-      </div>
-
-      <div class="upload-section">
-        <label for="uploadVideo">🎥 Video Input</label>
-        <div class="file-input-container">
-          <input type="file" id="uploadVideo" accept="video/*" />
-        </div>
-        <button id="uploadVideoBtn" disabled>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
-          </svg> Analyze Video
-        </button>
-        <div class="progress-bar" id="videoProgress" style="display: none;">
-          <div class="progress-fill" id="videoProgressFill"></div>
-        </div>
-        <div class="status-indicator" id="videoStatus">
-          <span class="status-dot"></span>
-          <span>Ready</span>
-        </div>
-      </div>
-    </div>
+    <!-- Media tab removed -->
 
     <div class="tab-content" id="history-tab">
       <div id="historyList">

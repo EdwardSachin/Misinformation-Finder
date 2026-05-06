@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const speech = require("@google-cloud/speech");
+// const speech = require("@google-cloud/speech");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
 const path = require("path");
@@ -15,60 +15,15 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" }));
 
-// Initialize Google Cloud Speech Client
-const speechClient = new speech.SpeechClient();
+// Removed Speech-to-Text client (audio/video logic removed)
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 console.log("✅ Server modules loaded. Starting endpoints...");
 
-// ------------------- TRANSCRIBE AUDIO -------------------
-app.post("/transcribe", async (req, res) => {
-  try {
-    const { audioBase64 } = req.body;
-    if (!audioBase64) {
-      return res.status(400).json({ error: "No audio provided" });
-    }
 
-    const audioBuffer = Buffer.from(audioBase64, "base64");
-    const type = await FileType.fromBuffer(audioBuffer);
-
-    let encoding = "WEBM_OPUS";
-    let sampleRateHertz = 48000;
-
-    if (type) {
-      if (type.mime === "audio/mpeg") {
-        encoding = "MP3";
-        sampleRateHertz = 16000;
-      } else if (type.mime === "audio/wav") {
-        encoding = "LINEAR16";
-        sampleRateHertz = 16000;
-      } else if (type.mime === "audio/webm") {
-        encoding = "WEBM_OPUS";
-        sampleRateHertz = 48000;
-      }
-    }
-
-    const audio = { content: audioBase64 };
-    const config = { encoding, sampleRateHertz, languageCode: "en-US" };
-
-    const [response] = await speechClient.recognize({ audio, config });
-    const transcription = response.results
-      .map((r) => r.alternatives[0].transcript)
-      .join("\n");
-
-    const claims = transcription
-      .split(/(?<=\.)\s+/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-
-    res.json({ text: transcription, claims });
-  } catch (err) {
-    console.error("❌ File transcription error:", err);
-    res.status(500).json({ error: "File transcription failed" });
-  }
-});
+// Audio transcription endpoint removed
 
 // ------------------- VERIFY TEXT WITH ENHANCED ANALYSIS -------------------
 app.post("/verify-text", async (req, res) => {
@@ -160,11 +115,8 @@ app.post("/verify-text", async (req, res) => {
   }
 });
 
-// ------------------- PROCESS VIDEO FILES -------------------
-app.post("/process-video", async (req, res) => {
-  // Placeholder for video processing if needed or remove if unused in this flow
-  res.json({ message: "Video processing not implemented yet" });
-});
+
+// Video processing endpoint removed
 
 app.listen(PORT, () => {
   console.log(`✅ Advanced Misinformation Detector running at http://localhost:${PORT}`);
